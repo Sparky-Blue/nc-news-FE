@@ -18,7 +18,7 @@ class ArticleFeed extends Component {
               body,
               comments,
               topic,
-              created_by: author,
+              created_by,
               title,
               votes,
               _id
@@ -32,7 +32,7 @@ class ArticleFeed extends Component {
                 <Voter articleId={_id} votes={votes} />
                 <h6>Comments: {comments}</h6>
                 <h5>
-                  Author: <Link to={`./users/${author}`}>{author}</Link>
+                  Author: <Link to={`/users/${created_by}`}>{created_by}</Link>
                 </h5>
               </li>
             );

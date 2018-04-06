@@ -24,16 +24,10 @@ class Article extends Component {
     });
   }
 
-  postComment = comment => {
-    API.postComment(this.props.match.params.article_id, comment).then(res =>
-      this.refreshComments()
-    );
-  };
-
   render() {
     const id = this.props.match.params.article_id;
     const article = this.props.getArticleById(id);
-    const { body, comments, topic, created_by: author, title, votes } = article;
+    const { body, comments, topic, created_by, title, votes } = article;
     return (
       <div className="article">
         <h4>{title}</h4>
@@ -42,7 +36,7 @@ class Article extends Component {
         <Voter articleId={id} votes={votes} />
         <h6>Comments: {comments}</h6>
         <h5>
-          Author: <Link to={`./users/${author}`}>{author}</Link>
+          Author: <Link to={`/users/${created_by}`}>{created_by}</Link>
         </h5>
         <p>{body}</p>
         <Comments

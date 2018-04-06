@@ -28,7 +28,17 @@ const API = {
       .post(`${APIroute}/articles/${articleId}/comments?username=jessjelly`, {
         comment: `${comment}`
       })
-      .then(console.log);
+      .then(response => response);
+  },
+  putArticleVote: (articleId, vote) => {
+    return axios
+      .put(`${APIroute}/articles/${articleId}?vote=${vote}`)
+      .then(response => response.data);
+  },
+  putCommentVote: (commentId, vote) => {
+    return axios
+      .put(`${APIroute}/articles/${commentId}?vote=${vote}`)
+      .then(response => response.data);
   }
 };
 

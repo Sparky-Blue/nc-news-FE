@@ -8,7 +8,6 @@ class Comments extends Component {
   };
 
   eventHandler = e => {
-    console.log(e.target.value);
     const textInput = e.target.value;
     this.saveNewComment(textInput);
   };
@@ -20,7 +19,6 @@ class Comments extends Component {
   };
 
   render() {
-    console.log(this.props.comments);
     const { comments } = this.props;
     return (
       <div className="comments">
