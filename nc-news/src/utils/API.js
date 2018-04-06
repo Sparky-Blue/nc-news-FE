@@ -37,7 +37,7 @@ const API = {
   },
   putCommentVote: (commentId, vote) => {
     return axios
-      .put(`${APIroute}/articles/${commentId}?vote=${vote}`)
+      .put(`${APIroute}/comments/${commentId}?vote=${vote}`)
       .then(response => response.data);
   }
 };
