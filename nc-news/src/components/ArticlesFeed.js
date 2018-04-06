@@ -1,22 +1,23 @@
 import React, { Component } from "react";
 import Article from "./Article";
+import Voter from "./Voter";
+import produce from "immer";
 
 class ArticleFeed extends Component {
   state = {
     openArticle: false
   };
 
-  toggleArticleView() {
+  toggleArticleView = () => {
     this.setState({
       openArticle: !this.state.openArticle
     });
-  }
+  };
 
   render() {
     return (
       <div>
-        Article Feed
-        <div>
+        <ul>
           {this.props.articles.map((article, i) => {
             const {
               body,
@@ -24,20 +25,21 @@ class ArticleFeed extends Component {
               topic,
               created_by: author,
               title,
-              votes
+              votes,
+              _id
             } = article;
             return (
               <li key={i}>
                 <h4 onClick={this.toggleArticleView}>{title}</h4>
                 <h5>{topic}</h5>
-                <h6>Votes: {votes}</h6>
+                <Voter articleId={_id} votes={votes} />
                 <h6>Comments: {comments}</h6>
                 <h5>Author: {author}</h5>
                 {this.state.openArticle && <Article article={article} />}
               </li>
             );
           })}
-        </div>
+        </ul>
       </div>
     );
   }

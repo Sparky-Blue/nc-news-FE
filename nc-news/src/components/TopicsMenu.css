@@ -1,0 +1,17 @@
+.topicsMenu {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  color: black;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+#topics {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  width: 500px;
+}

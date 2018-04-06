@@ -5,11 +5,23 @@ import Header from "./components/Header";
 import Home from "./components/Home";
 import ArticlesByTopic from "./components/ArticlesByTopic";
 import Comments from "./components/Comments";
-import TopicsMenu from "./components/TopicsMenu";
 import UsersView from "./components/UsersView";
 import Footer from "./components/Footer";
+import API from "./utils/API";
 
 class App extends Component {
+  state = {
+    topics: []
+  };
+
+  componentDidMount() {
+    API.getTopics().then(({ topics }) =>
+      this.setState({
+        topics
+      })
+    );
+  }
+
   render() {
     return (
       <Router>
@@ -18,7 +30,6 @@ class App extends Component {
           <Route exact path="/" component={Home} />
           <Route path="/topics/:topic/articles" component={ArticlesByTopic} />
           <Route path="/articles/:article_id/comments" component={Comments} />
-          <Route path="/topics" component={TopicsMenu} />
           <Route path="/users/:username" component={UsersView} />
           <Footer />
         </div>

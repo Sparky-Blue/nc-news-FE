@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import ArticlesFeed from "./ArticlesFeed";
-import TopicsMenu from "./TopicsMenu";
 import API from "../utils/API";
 
 class Home extends Component {
@@ -18,7 +17,6 @@ class Home extends Component {
     return (
       <div>
         <ArticlesFeed articles={this.state.articles} />
-        <TopicsMenu />
       </div>
     );
   }

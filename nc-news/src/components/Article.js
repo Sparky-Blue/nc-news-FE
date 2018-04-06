@@ -10,18 +10,19 @@ class Article extends Component {
       topic,
       created_by: author,
       title,
-      votes
+      votes,
+      _id
     } = this.props.article;
     return (
       <div className="article">
         <h4>{title}</h4>
-        <h5>{topic}</h5>
+        <h5>Topic: {topic}</h5>
         <h6>Votes: {votes}</h6>
-        <Voter />
+        <Voter articleId={_id} votes={votes} />
         <h6>Comments: {comments}</h6>
-        <Comments />
         <h5>Author: {author}</h5>
         <p>{body}</p>
+        <Comments articleId={_id} />
       </div>
     );
   }
