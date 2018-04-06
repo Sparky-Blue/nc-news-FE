@@ -15,6 +15,7 @@ class Comments extends Component {
       })
     );
   }
+
   render() {
     return (
       <div className="comments">
@@ -31,7 +32,7 @@ class Comments extends Component {
               }
             );
             return (
-              <li>
+              <li key={i}>
                 <div className="comment">
                   <p>{body}</p>
                   <h5>comment from: {created_by.username}</h5>

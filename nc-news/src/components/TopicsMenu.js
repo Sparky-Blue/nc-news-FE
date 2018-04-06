@@ -24,9 +24,9 @@ class TopicsMenu extends Component {
       <div className="topicsMenu">
         <ul>
           <div id="topics">
-            {this.state.topics.map(topic => (
-              <li>
-                <Link to="#">{topic.title}</Link>
+            {this.state.topics.map((topic, i) => (
+              <li key={i}>
+                <Link to={`/topics/${topic.slug}/articles`}>{topic.title}</Link>
               </li>
             ))}
           </div>
@@ -35,6 +35,10 @@ class TopicsMenu extends Component {
       </div>
     );
   }
+
+  // static propTypes = {
+
+  // }
 }
 
 export default TopicsMenu;

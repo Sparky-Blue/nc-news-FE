@@ -3,20 +3,10 @@ import ArticlesFeed from "./ArticlesFeed";
 import API from "../utils/API";
 
 class Home extends Component {
-  state = { articles: [] };
-
-  componentDidMount() {
-    API.getArticles().then(({ articles }) =>
-      this.setState({
-        articles
-      })
-    );
-  }
-
   render() {
     return (
       <div>
-        <ArticlesFeed articles={this.state.articles} />
+        <ArticlesFeed articles={this.props.articles} />
       </div>
     );
   }

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import Article from "./Article";
 import Voter from "./Voter";
 import produce from "immer";
@@ -6,12 +7,6 @@ import produce from "immer";
 class ArticleFeed extends Component {
   state = {
     openArticle: false
-  };
-
-  toggleArticleView = () => {
-    this.setState({
-      openArticle: !this.state.openArticle
-    });
   };
 
   render() {
@@ -30,12 +25,13 @@ class ArticleFeed extends Component {
             } = article;
             return (
               <li key={i}>
-                <h4 onClick={this.toggleArticleView}>{title}</h4>
+                <h4>
+                  <Link to={`/articles/${_id}`}>{title}</Link>
+                </h4>
                 <h5>{topic}</h5>
                 <Voter articleId={_id} votes={votes} />
                 <h6>Comments: {comments}</h6>
                 <h5>Author: {author}</h5>
-                {this.state.openArticle && <Article article={article} />}
               </li>
             );
           })}
