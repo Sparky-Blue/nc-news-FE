@@ -1,26 +1,42 @@
 import React, { Component } from "react";
-import API from "../utils/API";
+
 import Voter from "./Voter";
 
 class Comments extends Component {
   state = {
-    comments: []
+    newComment: ""
   };
 
-  componentDidMount() {
-    const articleId = this.props.articleId;
-    API.getCommentsByArticle(articleId).then(({ comments }) =>
-      this.setState({
-        comments
-      })
-    );
-  }
+  eventHandler = e => {
+    console.log(e.target.value);
+    const textInput = e.target.value;
+    this.saveNewComment(textInput);
+  };
+
+  saveNewComment = input => {
+    this.setState({
+      newComment: input
+    });
+  };
 
   render() {
+    console.log(this.props.comments);
+    const { comments } = this.props;
     return (
       <div className="comments">
+        <div className="input" id="addComment">
+          Add comment:
+          <input
+            type="text"
+            onChange={this.eventHandler}
+            value={this.state.newComment}
+          />
+          <button onClick={() => this.props.postComment(this.state.newComment)}>
+            Submit
+          </button>
+        </div>
         <ul>
-          {this.state.comments.map((comment, i) => {
+          {comments.map((comment, i) => {
             const { body, created_by, _id, votes, created_at } = comment;
             const dateCreated = new Date(created_at).toLocaleDateString(
               "en-GB",

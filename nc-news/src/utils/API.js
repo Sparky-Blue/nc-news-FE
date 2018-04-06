@@ -18,10 +18,17 @@ const API = {
       .get(`${APIroute}/articles/${articleId}/comments`)
       .then(response => response.data);
   },
-  getUsers: username => {
+  getUser: username => {
     return axios
       .get(`${APIroute}/users/${username}`)
       .then(response => response.data);
+  },
+  postComment: (articleId, comment) => {
+    return axios
+      .post(`${APIroute}/articles/${articleId}/comments?username=jessjelly`, {
+        comment: `${comment}`
+      })
+      .then(console.log);
   }
 };
 

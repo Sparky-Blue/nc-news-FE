@@ -31,7 +31,9 @@ class ArticleFeed extends Component {
                 <h5>{topic}</h5>
                 <Voter articleId={_id} votes={votes} />
                 <h6>Comments: {comments}</h6>
-                <h5>Author: {author}</h5>
+                <h5>
+                  Author: <Link to={`./users/${author}`}>{author}</Link>
+                </h5>
               </li>
             );
           })}
