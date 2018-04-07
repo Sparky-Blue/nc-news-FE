@@ -19,7 +19,7 @@ class ArticleFeed extends Component {
 
   static propTypes = {
     articles: PT.array.isRequired,
-    loading: PT.bool.isRequired
+    loading: PT.bool
   };
 }
 
