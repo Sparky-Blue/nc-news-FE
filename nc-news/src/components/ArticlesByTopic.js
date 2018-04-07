@@ -30,8 +30,8 @@ class ArticlesByTopic extends Component {
 
   updateArticlesByTopic() {
     const topic = this.props.match.params.topic;
-    API.getArticlesByTopic(topic).then(({ articles }) => {
-      articles = sortBy(articles, "votes");
+    API.getArticlesByTopic(topic).then(({ articlesData }) => {
+      const articles = sortBy(articlesData, "votes");
       this.setState({ articles, topic, loadingData: false });
     });
   }

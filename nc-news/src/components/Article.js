@@ -17,8 +17,8 @@ class Article extends Component {
 
   refreshComments() {
     const articleId = this.props.match.params.article_id;
-    API.getCommentsByArticle(articleId).then(({ comments }) => {
-      comments = sortBy(comments, "created_at");
+    API.getCommentsByArticle(articleId).then(({ commentsData }) => {
+      const comments = sortBy(commentsData, "created_at");
       this.setState({
         comments
       });
