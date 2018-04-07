@@ -48,9 +48,6 @@ class App extends Component {
               />
             )}
           />
-          <Route path="/topics/:topic/articles" component={ArticlesByTopic} />
-          <Route path="/articles/:article_id/comments" component={Comments} />
-          <Route path="/users/:username" component={User} />
           <Route
             path="/articles/:article_id"
             render={props => {
@@ -59,6 +56,9 @@ class App extends Component {
               );
             }}
           />
+          <Route path="/topics/:topic/articles" component={ArticlesByTopic} />
+          <Route path="/articles/:article_id/comments" component={Comments} />
+          <Route path="/users/:username" component={User} />
           <Footer />
         </div>
       </Router>
