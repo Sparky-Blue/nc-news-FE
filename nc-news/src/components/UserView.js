@@ -15,8 +15,6 @@ class UserView extends Component {
   }
 
   render() {
-    console.log(this.props.match.params);
-
     const { name, username, avatar_url } = this.state.user;
     return (
       <div className="col-sm-3 user">
@@ -28,7 +26,7 @@ class UserView extends Component {
             id="header-blur"
           />
           <div className="avatar">
-            <img src={avatar_url} alt={`image of ${username}`} />
+            <img src={avatar_url} alt={`${username}`} />
           </div>
           <div className="content">
             <p>Name: {name}</p>

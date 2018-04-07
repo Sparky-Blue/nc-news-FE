@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import LogIn from "./LogIn";
 import "./Header.css";
 import TopicsMenu from "./TopicsMenu";

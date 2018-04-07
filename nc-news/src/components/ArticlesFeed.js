@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import Article from "./Article";
 import Voter from "./Voter";
-import produce from "immer";
 
 class ArticleFeed extends Component {
   state = {
@@ -14,15 +12,7 @@ class ArticleFeed extends Component {
       <div>
         <ul>
           {this.props.articles.map((article, i) => {
-            const {
-              body,
-              comments,
-              topic,
-              created_by,
-              title,
-              votes,
-              _id
-            } = article;
+            const { comments, topic, created_by, title, votes, _id } = article;
             return (
               <li key={i}>
                 <h4>

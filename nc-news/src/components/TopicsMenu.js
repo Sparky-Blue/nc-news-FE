@@ -2,7 +2,6 @@ import React, { Component } from "react";
 //import PT from "prop-types";
 import "./TopicsMenu.css";
 import { Link } from "react-router-dom";
-import ArticlesByTopic from "./ArticlesByTopic";
 import Search from "./Search";
 import API from "../utils/API";
 
