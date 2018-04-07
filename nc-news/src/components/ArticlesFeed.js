@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import PT from "prop-types";
 import Voter from "./Voter";
 
 class ArticleFeed extends Component {
@@ -31,6 +32,10 @@ class ArticleFeed extends Component {
       </div>
     );
   }
+
+  static propTypes = {
+    articles: PT.array.isRequired
+  };
 }
 
 export default ArticleFeed;

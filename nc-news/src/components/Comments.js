@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PT from "prop-types";
 import Comment from "./Comment";
 
 class Comments extends Component {
@@ -35,6 +36,10 @@ class Comments extends Component {
       </div>
     );
   }
+  static propTypes = {
+    comments: PT.array.isRequired,
+    postComment: PT.func.isRequired
+  };
 }
 
 export default Comments;

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PT from "prop-types";
 import ArticlesFeed from "./ArticlesFeed";
 
 class Home extends Component {
@@ -9,6 +10,10 @@ class Home extends Component {
       </div>
     );
   }
+
+  static propTypes = {
+    articles: PT.array.isRequired
+  };
 }
 
 export default Home;

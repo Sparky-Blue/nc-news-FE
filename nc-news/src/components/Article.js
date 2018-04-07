@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import PT from "prop-types";
 import API from "../utils/API";
 import Voter from "./Voter";
 import Comments from "./Comments";
@@ -53,6 +54,9 @@ class Article extends Component {
       </div>
     );
   }
+  static propTypes = {
+    getArticleById: PT.func.isRequired
+  };
 }
 
 export default Article;

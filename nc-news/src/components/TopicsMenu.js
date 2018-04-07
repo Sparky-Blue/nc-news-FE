@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-//import PT from "prop-types";
 import "./TopicsMenu.css";
 import { Link } from "react-router-dom";
 import Search from "./Search";
@@ -34,10 +33,6 @@ class TopicsMenu extends Component {
       </div>
     );
   }
-
-  // static propTypes = {
-
-  // }
 }
 
 export default TopicsMenu;
