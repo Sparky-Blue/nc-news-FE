@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import PT from "prop-types";
 import API from "../utils/API";
 import sortBy from "../utils/sortBy";
-import Voter from "./Voter";
-import Comments from "./Comments";
+import Voter from "../components/Voter";
+import Comments from "../components/Comments";
 
 class Article extends Component {
   state = {
@@ -34,7 +34,6 @@ class Article extends Component {
   render() {
     const id = this.props.match.params.article_id;
     const article = this.props.getArticleById(id);
-    console.log(article);
     const { body, comments, topic, created_by, title, votes } = article;
     return (
       <div className="article">

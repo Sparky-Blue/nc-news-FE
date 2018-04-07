@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import "./ArticlesByTopic.css";
+//import "./ArticlesByTopic.css";
 import API from "../utils/API";
-import ArticlesFeed from "./ArticlesFeed";
+import ArticlesFeed from "../components/ArticlesFeed";
 import sortBy from "../utils/sortBy";
-import Loading from "./Loading";
+import Loading from "../components/Loading";
 
 class ArticlesByTopic extends Component {
   state = { articles: [], topic: null, loadingData: true };

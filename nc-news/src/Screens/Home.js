@@ -1,5 +1,5 @@
 import React from "react";
-import ArticlesFeed from "./ArticlesFeed";
+import ArticlesFeed from "../components/ArticlesFeed";
 
 const Home = ({ articles, loading }) => {
   return (
