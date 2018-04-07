@@ -17,10 +17,10 @@ class Article extends Component {
 
   refreshComments() {
     const articleId = this.props.match.params.article_id;
-    API.getCommentsByArticle(articleId).then(({ commentsData }) => {
-      const comments = sortBy(commentsData, "created_at");
+    API.getCommentsByArticle(articleId).then(({ comments }) => {
+      const commentsList = sortBy(comments, "created_at");
       this.setState({
-        comments
+        comments: commentsList
       });
     });
   }
@@ -34,6 +34,7 @@ class Article extends Component {
   render() {
     const id = this.props.match.params.article_id;
     const article = this.props.getArticleById(id);
+    console.log(article);
     const { body, comments, topic, created_by, title, votes } = article;
     return (
       <div className="article">
