@@ -1,22 +1,12 @@
-import React, { Component } from "react";
-import PT from "prop-types";
+import React from "react";
 import ArticlesFeed from "./ArticlesFeed";
 
-class Home extends Component {
-  render() {
-    return (
-      <div>
-        <ArticlesFeed
-          articles={this.props.articles}
-          loading={this.props.loading}
-        />
-      </div>
-    );
-  }
-
-  static propTypes = {
-    articles: PT.array.isRequired
-  };
-}
+const Home = ({ articles, loading }) => {
+  return (
+    <div>
+      <ArticlesFeed articles={articles} loading={loading} />
+    </div>
+  );
+};
 
 export default Home;
