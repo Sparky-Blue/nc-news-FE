@@ -5,7 +5,7 @@ import Header from "./components/Header";
 import Home from "./components/Home";
 import ArticlesByTopic from "./components/ArticlesByTopic";
 import Comments from "./components/Comments";
-import UserView from "./components/UserView";
+import User from "./components/User";
 import Article from "./components/Article";
 import Footer from "./components/Footer";
 import API from "./utils/API";
@@ -50,7 +50,7 @@ class App extends Component {
           />
           <Route path="/topics/:topic/articles" component={ArticlesByTopic} />
           <Route path="/articles/:article_id/comments" component={Comments} />
-          <Route path="/users/:username" component={UserView} />
+          <Route path="/users/:username" component={User} />
           <Route
             path="/articles/:article_id"
             render={props => {

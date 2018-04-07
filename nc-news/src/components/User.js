@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import API from "../utils/API";
 
-class UserView extends Component {
+class User extends Component {
   state = {
     user: []
   };
@@ -38,4 +38,4 @@ class UserView extends Component {
   }
 }
 
-export default UserView;
+export default User;
