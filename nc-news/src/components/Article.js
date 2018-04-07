@@ -39,7 +39,6 @@ class Article extends Component {
       <div className="article">
         <h4>{title}</h4>
         <h5>Topic: {topic}</h5>
-        <h6>Votes: {votes}</h6>
         <Voter articleId={id} votes={votes} />
         <h6>Comments: {comments}</h6>
         <h5>

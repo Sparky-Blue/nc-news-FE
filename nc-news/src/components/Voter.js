@@ -1,32 +1,59 @@
-import React from "react";
+import React, { Component } from "react";
 import API from "../utils/API";
+import Button from "./Button";
+import Votes from "./Votes";
 
-const Voter = ({ articleId = null, commentId = null, votes, changeVote }) => {
-  const handleClick = value => {
+class Voter extends Component {
+  state = {
+    votes: this.props.votes,
+    voted: false
+  };
+
+  handleClick = value => {
+    if (this.state.voted) return;
+    const { articleId, commentId } = this.props;
     const vote = value;
-    if (articleId) changeArticleVote(vote);
-    if (commentId) changeCommentVote(vote);
+    if (articleId) this.changeArticleVote(vote);
+    if (commentId) this.changeCommentVote(vote);
   };
 
-  const changeArticleVote = vote => {
-    API.putArticleVote(articleId, vote).then();
+  changeArticleVote = vote => {
+    const { articleId, votes } = this.props;
+    API.putArticleVote(articleId, vote).then(res => {
+      this.setState({
+        voted: true,
+        votes: vote === "up" ? +votes + 1 : +votes - 1
+      });
+    });
   };
 
-  const changeCommentVote = vote => {
-    API.putCommentVote(commentId, vote).then();
+  changeCommentVote = vote => {
+    const { commentId, votes } = this.props;
+    API.putCommentVote(commentId, vote).then(res => {
+      this.setState({
+        voted: true,
+        votes: vote === "up" ? +votes + 1 : +votes - 1
+      });
+    });
   };
 
-  return (
-    <div className="voter">
-      <button onClick={() => handleClick("up")}>
-        <i className="fas fa-thumbs-up" />
-      </button>
-      <p>Votes: {votes}</p>
-      <button onClick={() => handleClick("down")}>
-        <i className="far fa-thumbs-down" />
-      </button>
-    </div>
-  );
-};
+  render() {
+    return (
+      <div className="voter">
+        <Button
+          vote="up"
+          handleClick={this.handleClick}
+          voted={this.state.voted}
+        />
+        <Votes votes={this.state.votes} />
+        <Button
+          vote="down"
+          handleClick={this.handleClick}
+          voted={this.state.voted}
+        />
+      </div>
+    );
+  }
+}
 
 export default Voter;
