@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./ArticlesByTopic.css";
 import API from "../utils/API";
 import ArticlesFeed from "./ArticlesFeed";
-import sortArticlesByVotes from "../utils/sortArticlesByVotes";
+import sortBy from "../utils/sortBy";
 import Loading from "./Loading";
 
 class ArticlesByTopic extends Component {
@@ -31,7 +31,7 @@ class ArticlesByTopic extends Component {
   updateArticlesByTopic() {
     const topic = this.props.match.params.topic;
     API.getArticlesByTopic(topic).then(({ articles }) => {
-      articles = sortArticlesByVotes(articles);
+      articles = sortBy(articles, "votes");
       this.setState({ articles, topic, loadingData: false });
     });
   }

@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import PT from "prop-types";
 import API from "../utils/API";
+import sortBy from "../utils/sortBy";
 import Voter from "./Voter";
 import Comments from "./Comments";
-import sortCommentsByTime from "../utils/sortCommentsByTime";
 
 class Article extends Component {
   state = {
@@ -18,7 +18,7 @@ class Article extends Component {
   refreshComments() {
     const articleId = this.props.match.params.article_id;
     API.getCommentsByArticle(articleId).then(({ comments }) => {
-      comments = sortCommentsByTime(comments);
+      comments = sortBy(comments, "created_at");
       this.setState({
         comments
       });

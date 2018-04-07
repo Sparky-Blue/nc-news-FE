@@ -9,7 +9,7 @@ import User from "./components/User";
 import Article from "./components/Article";
 import Footer from "./components/Footer";
 import API from "./utils/API";
-import sortArticlesByVotes from "./utils/sortArticlesByVotes";
+import sortBy from "./utils/sortBy";
 
 class App extends Component {
   state = {
@@ -19,7 +19,7 @@ class App extends Component {
 
   componentDidMount() {
     API.getArticles().then(({ articles }) => {
-      articles = sortArticlesByVotes(articles);
+      articles = sortBy(articles, "votes");
       this.setState({ articles, loadingData: false });
     });
   }
