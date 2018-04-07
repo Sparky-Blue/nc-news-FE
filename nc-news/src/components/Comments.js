@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PT from "prop-types";
 import Comment from "./Comment";
+import AddComment from "./AddComment";
 
 class Comments extends Component {
   state = {
@@ -21,17 +22,11 @@ class Comments extends Component {
   render() {
     return (
       <div className="comments">
-        <div className="input" id="addComment">
-          Add comment:
-          <input
-            type="text"
-            onChange={this.eventHandler}
-            value={this.state.newComment}
-          />
-          <button onClick={() => this.props.postComment(this.state.newComment)}>
-            Submit
-          </button>
-        </div>
+        <AddComment
+          eventHandler={this.eventHandler}
+          newComment={this.state.newComment}
+          postComment={this.props.postComment}
+        />
         <Comment comments={this.props.comments} />
       </div>
     );
