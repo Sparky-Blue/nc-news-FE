@@ -6,15 +6,13 @@ import TopicsMenu from "./TopicsMenu";
 
 const Header = () => {
   return (
-    <div className="titles">
+    <header>
       <Link to="/">
         <h1>NC News</h1>
       </Link>
-      <div className="login">
-        <LogIn />
-        <TopicsMenu />
-      </div>
-    </div>
+      <LogIn />
+      <TopicsMenu />
+    </header>
   );
 };
 
