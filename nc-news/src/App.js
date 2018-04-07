@@ -4,7 +4,6 @@ import "./App.css";
 import Header from "./components/Header";
 import Home from "./Screens/Home";
 import ArticlesByTopic from "./Screens/ArticlesByTopic";
-import Comments from "./components/Comments";
 import User from "./Screens/User";
 import Article from "./Screens/Article";
 import Footer from "./components/Footer";
@@ -57,7 +56,6 @@ class App extends Component {
             }}
           />
           <Route path="/topics/:topic/articles" component={ArticlesByTopic} />
-          <Route path="/articles/:article_id/comments" component={Comments} />
           <Route path="/users/:username" component={User} />
           <Footer />
         </div>

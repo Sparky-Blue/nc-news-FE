@@ -5,6 +5,7 @@ import API from "../utils/API";
 import sortBy from "../utils/sortBy";
 import Voter from "../components/Voter";
 import Comments from "../components/Comments";
+import "./Article.css";
 
 class Article extends Component {
   state = {
@@ -44,7 +45,7 @@ class Article extends Component {
         <h5>
           Author: <Link to={`/users/${created_by}`}>{created_by}</Link>
         </h5>
-        <p>{body}</p>
+        <p className="body">{body}</p>
         <Comments
           articleId={id}
           comments={this.state.comments}

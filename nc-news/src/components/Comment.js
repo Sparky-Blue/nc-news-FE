@@ -1,6 +1,7 @@
 import React from "react";
 import Voter from "./Voter";
 import displayDate from "../utils/displayDate";
+import "./Comment.css";
 
 const Comment = ({ comments }) => {
   return (
@@ -11,9 +12,11 @@ const Comment = ({ comments }) => {
         return (
           <li key={i}>
             <div className="comment">
-              <p>{body}</p>
-              <h5>comment from: {created_by.username}</h5>
-              <p>added on: {dateCreated}</p>
+              <div className="commentText">
+                <p className="body">{body}</p>
+                <p>comment from: {created_by.username}</p>
+                <p>added on: {dateCreated}</p>
+              </div>
               <Voter commentId={_id} votes={votes} />
             </div>
           </li>

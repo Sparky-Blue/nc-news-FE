@@ -1,9 +1,10 @@
 import React from "react";
+import "./Button.css";
 
 const Button = ({ vote, handleClick, voted }) => {
   return (
     <button
-      className={voted ? "disabled" : "active"}
+      className={voted ? "voteButton disabled" : "voteButton active"}
       disabled={voted}
       onClick={() => handleClick(vote)}
     >

@@ -9,6 +9,14 @@ class Voter extends Component {
     voted: false
   };
 
+  componentDidMount() {
+    const votes = this.props.votes;
+    console.log(votes);
+    this.setState({
+      votes
+    });
+  }
+
   handleClick = value => {
     if (this.state.voted) return;
     const { articleId, commentId } = this.props;

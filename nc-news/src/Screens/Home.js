@@ -3,7 +3,7 @@ import ArticlesFeed from "../components/ArticlesFeed";
 
 const Home = ({ articles, loading }) => {
   return (
-    <div>
+    <div className="home">
       <ArticlesFeed articles={articles} loading={loading} />
     </div>
   );
