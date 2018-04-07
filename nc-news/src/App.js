@@ -19,8 +19,8 @@ class App extends Component {
 
   componentDidMount() {
     API.getArticles().then(({ articles }) => {
-      articles = sortBy(articles, "votes");
-      this.setState({ articles, loadingData: false });
+      const articlesList = sortBy(articles, "votes");
+      this.setState({ articles: articlesList, loadingData: false });
     });
   }
 
