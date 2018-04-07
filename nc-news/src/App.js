@@ -13,15 +13,14 @@ import sortArticlesByVotes from "./utils/sortArticlesByVotes";
 
 class App extends Component {
   state = {
-    articles: []
+    articles: [],
+    loadingData: true
   };
 
   componentDidMount() {
     API.getArticles().then(({ articles }) => {
       articles = sortArticlesByVotes(articles);
-      this.setState({
-        articles
-      });
+      this.setState({ articles, loadingData: false });
     });
   }
 
@@ -42,7 +41,11 @@ class App extends Component {
             exact
             path="/"
             render={() => (
-              <Home {...this.props} articles={this.state.articles} />
+              <Home
+                {...this.props}
+                articles={this.state.articles}
+                loading={this.state.loadingData}
+              />
             )}
           />
           <Route path="/topics/:topic/articles" component={ArticlesByTopic} />

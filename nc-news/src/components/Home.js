@@ -6,7 +6,10 @@ class Home extends Component {
   render() {
     return (
       <div>
-        <ArticlesFeed articles={this.props.articles} />
+        <ArticlesFeed
+          articles={this.props.articles}
+          loading={this.props.loading}
+        />
       </div>
     );
   }

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import Loading from "./Loading";
 import PT from "prop-types";
 import Voter from "./Voter";
 
@@ -11,6 +12,7 @@ class ArticleFeed extends Component {
   render() {
     return (
       <div>
+        {this.props.loading && <Loading loading={this.props.loading} />}
         <ul>
           {this.props.articles.map((article, i) => {
             const { comments, topic, created_by, title, votes, _id } = article;
@@ -34,7 +36,8 @@ class ArticleFeed extends Component {
   }
 
   static propTypes = {
-    articles: PT.array.isRequired
+    articles: PT.array.isRequired,
+    loading: PT.bool.isRequired
   };
 }
 
