@@ -3,7 +3,9 @@ const displayDate = created_at => {
     weekday: "long",
     year: "numeric",
     month: "long",
-    day: "numeric"
+    day: "numeric",
+    hour: "numeric",
+    minute: "numeric"
   });
 };
 
