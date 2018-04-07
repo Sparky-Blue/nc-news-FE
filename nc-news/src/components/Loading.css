@@ -1,20 +1,13 @@
-/* loading
-html,
-body {
-  margin: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #343338;
-} */
-
-.loading-content {
+.modal {
+  position: fixed;
+  top: 30%;
+  left: 40%;
+  z-index: 100;
+  transition: 0.5s ease-out;
+  visibility: visible;
   width: 200px;
   height: 200px;
   display: flex;
-  position: relative;
   align-items: center;
   justify-content: center;
 }
@@ -24,7 +17,7 @@ body {
   width: 200px;
   height: 100px;
   position: absolute;
-  border: 1px solid black;
+  border: 3px solid black;
   border-bottom: 0;
   transform-origin: 50% 100%;
   background-color: transparent;
@@ -67,3 +60,65 @@ body {
     transform: rotate(360deg);
   }
 }
+
+/* // Body background
+
+body{
+  background: url(http://static.pexels.com/wp-content/uploads/2014/07/darkness-dawn-dusk-2073.jpg) no-repeat;
+  background-size: 1920px 1000px;
+}
+
+// Show Button
+
+.show{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 150px;
+  height: 40px;
+  margin-top: -20px;
+  margin-left: -75px;
+  background: #e74c3c;
+  color: #fff;
+  border-radius: 5px;
+  border: 0;
+  border-bottom: 2px solid #c0392b;
+  cursor: pointer;
+  
+  &:hover{
+    background: #c0392b;
+  }
+  
+  &:active{
+    transform: scale(0.9);
+  }
+}
+
+// Close Button
+
+.close{
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 35px;
+  height: 30px;
+  background: #000;
+  color: #fff;
+  cursor: pointer;
+  border: 0;
+} */
+/* 
+.mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(52, 73, 94, 0.8);
+  z-index: 50;
+  visibility: hidden;
+
+  opacity: 0;
+
+  transition: 0.7s;
+} */
