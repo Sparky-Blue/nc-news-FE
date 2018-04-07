@@ -10,6 +10,7 @@ import Article from "./components/Article";
 import Footer from "./components/Footer";
 import API from "./utils/API";
 import sortBy from "./utils/sortBy";
+import _ from "underscore";
 
 class App extends Component {
   state = {
@@ -25,10 +26,9 @@ class App extends Component {
   }
 
   getArticleById = id => {
-    const article = this.state.articles.reduce((acc, article) => {
-      if (article._id === id) acc = article;
-      return acc;
-    }, {});
+    let article = {};
+    if (this.state.articles.length === 0) return article;
+    article = _.findWhere(this.state.articles, { _id: id });
     return article;
   };
 
