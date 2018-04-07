@@ -14,6 +14,12 @@ class Article extends Component {
     this.refreshComments();
   }
 
+  postComment = comment => {
+    API.postComment(this.props.match.params.article_id, comment).then(res =>
+      this.refreshComments()
+    );
+  };
+
   refreshComments() {
     const articleId = this.props.match.params.article_id;
     API.getCommentsByArticle(articleId).then(({ comments }) => {
