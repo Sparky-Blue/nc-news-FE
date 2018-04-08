@@ -22,11 +22,8 @@ const LogIn = ({
               onChange={eventHandler}
               value={newUser}
             />
-            Log in
           </label>
-          <button onClick={() => authenticateUserName(newUser)} name="Log in">
-            Log in
-          </button>
+          <button onClick={() => authenticateUserName(newUser)}>Log in</button>
         </div>
       )}
       {username && (
