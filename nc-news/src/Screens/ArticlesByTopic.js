@@ -42,7 +42,7 @@ class ArticlesByTopic extends Component {
         {this.state.loadingData && (
           <Loading loadingData={this.state.loadingData} />
         )}
-        <ArticlesFeed articles={this.state.articles} />>
+        <ArticlesFeed articles={this.state.articles} />
       </div>
     );
   }
