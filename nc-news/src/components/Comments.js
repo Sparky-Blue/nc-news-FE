@@ -8,6 +8,11 @@ class Comments extends Component {
     newComment: ""
   };
 
+  static propTypes = {
+    comments: PT.array.isRequired,
+    postComment: PT.func.isRequired
+  };
+
   eventHandler = e => {
     const textInput = e.target.value;
     this.saveNewComment(textInput);
@@ -39,10 +44,6 @@ class Comments extends Component {
       </div>
     );
   }
-  static propTypes = {
-    comments: PT.array.isRequired,
-    postComment: PT.func.isRequired
-  };
 }
 
 export default Comments;
