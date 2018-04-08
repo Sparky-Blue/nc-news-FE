@@ -21,7 +21,6 @@ class TopicsMenu extends Component {
     return (
       <div className="topicsMenu">
         <Topics topics={this.state.topics} />
-        <Search />
       </div>
     );
   }
