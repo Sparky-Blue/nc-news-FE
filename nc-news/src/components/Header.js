@@ -4,13 +4,13 @@ import LogIn from "./LogIn";
 import "./Header.css";
 import TopicsMenu from "./TopicsMenu";
 
-const Header = () => {
+const Header = ({ username }) => {
   return (
     <header>
       <Link to="/">
         <h1>NC News</h1>
       </Link>
-      <LogIn />
+      <LogIn username={username} />
       <TopicsMenu />
     </header>
   );

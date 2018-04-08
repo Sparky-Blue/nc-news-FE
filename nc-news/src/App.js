@@ -14,7 +14,8 @@ import _ from "underscore";
 class App extends Component {
   state = {
     articles: [],
-    loadingData: true
+    loadingData: true,
+    username: null
   };
 
   componentDidMount() {
@@ -35,7 +36,7 @@ class App extends Component {
     return (
       <Router>
         <div className="wrapper app">
-          <Header />
+          <Header username={this.state.username} />
           <Route
             exact
             path="/"
