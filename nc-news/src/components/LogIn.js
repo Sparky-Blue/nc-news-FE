@@ -1,57 +1,50 @@
-import React, { Component } from "react";
+import React from "react";
 import "./LogIn.css";
-import API from "../utils/API";
-import LogInView from "./LogInView";
 
-class LogIn extends Component {
-  state = {
-    username: this.props.username,
-    newUser: "",
-    usernameError: false
-  };
-
-  authenticateUser = username => {
-    return API.getUser(username).then(user => {
-      if (user.user)
-        this.setState({
-          username,
-          newUser: "",
-          usernameError: false
-        });
-      else
-        this.setState({
-          usernameError: true
-        });
-    });
-  };
-
-  eventHandler = e => {
-    const textInput = e.target.value;
-    this.saveUserInput(textInput);
-  };
-
-  saveUserInput = input => {
-    this.setState({
-      newUser: input.toLowerCase()
-    });
-  };
-
-  signout = () => {
-    this.setState({
-      username: null
-    });
-  };
-
-  render() {
-    return (
-      <LogInView
-        logInState={this.state}
-        eventHandler={this.eventHandler}
-        authenticateUser={this.authenticateUser}
-        signout={this.signout}
-      />
-    );
-  }
-}
+const LogIn = ({
+  logInState,
+  eventHandler,
+  authenticateUserName,
+  signout,
+  username,
+  newUser,
+  usernameError
+}) => {
+  return (
+    <div className="login">
+      {usernameError && <p>Please enter a valid username</p>}
+      {!username && (
+        <div className="newUserLogin">
+          <label>
+            Enter username<input
+              type="text"
+              className="username"
+              onChange={eventHandler}
+              value={newUser}
+            />
+            Log in
+          </label>
+          <button onClick={() => authenticateUserName(newUser)} name="Log in">
+            Log in
+          </button>
+        </div>
+      )}
+      {username && (
+        <div>
+          <p>
+            Welcome, you are logged in as {username}
+            <button
+              onClick={() => {
+                signout();
+              }}
+            >
+              Sign out
+            </button>
+          </p>
+        </div>
+      )}
+    </div>
+  );
+};
 
 export default LogIn;

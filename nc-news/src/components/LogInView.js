@@ -1,6 +1,11 @@
 import React from "react";
 
-const LogInView = ({ logInState, eventHandler, authenticateUser, signout }) => {
+const LogInView = ({
+  logInState,
+  eventHandler,
+  authenticateUserName,
+  signout
+}) => {
   const { username, newUser, usernameError } = logInState;
   return (
     <div className="login">
@@ -16,7 +21,7 @@ const LogInView = ({ logInState, eventHandler, authenticateUser, signout }) => {
             />
             Log in
           </label>
-          <button onClick={() => authenticateUser(newUser)} name="Log in">
+          <button onClick={() => authenticateUserName(newUser)} name="Log in">
             Log in
           </button>
         </div>
