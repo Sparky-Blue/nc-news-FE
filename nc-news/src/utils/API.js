@@ -23,9 +23,9 @@ const API = {
       .get(`${APIroute}/users/${username}`)
       .then(response => response.data);
   },
-  postComment: (articleId, comment) => {
+  postComment: (articleId, comment, username) => {
     return axios
-      .post(`${APIroute}/articles/${articleId}/comments?username=jessjelly`, {
+      .post(`${APIroute}/articles/${articleId}/comments?username=${username}`, {
         comment: `${comment}`
       })
       .then(response => response);
