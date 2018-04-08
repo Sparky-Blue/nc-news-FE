@@ -22,12 +22,20 @@ class Comments extends Component {
   render() {
     return (
       <div className="comments">
-        <AddComment
-          eventHandler={this.eventHandler}
-          newComment={this.state.newComment}
-          postComment={this.props.postComment}
+        {this.props.username ? (
+          <AddComment
+            eventHandler={this.eventHandler}
+            newComment={this.state.newComment}
+            postComment={this.props.postComment}
+          />
+        ) : (
+          <p>You must be logged in to add a comment</p>
+        )}
+        <Comment
+          comments={this.props.comments}
+          deleteComment={this.props.deleteComment}
+          username={this.props.username}
         />
-        <Comment comments={this.props.comments} />
       </div>
     );
   }

@@ -4,10 +4,6 @@ import PT from "prop-types";
 import ArticleDisplay from "./ArticleDisplay";
 
 class ArticleFeed extends Component {
-  state = {
-    openArticle: false
-  };
-
   render() {
     return (
       <div>

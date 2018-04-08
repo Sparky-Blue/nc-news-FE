@@ -3,7 +3,7 @@ import Voter from "./Voter";
 import displayDate from "../utils/displayDate";
 import "./Comment.css";
 
-const Comment = ({ comments }) => {
+const Comment = ({ comments, deleteComment, username }) => {
   return (
     <ul>
       {comments.map((comment, i) => {
@@ -16,6 +16,9 @@ const Comment = ({ comments }) => {
                 <p className="body">{body}</p>
                 <p>comment from: {created_by.username}</p>
                 <p>added on: {dateCreated}</p>
+                {username === created_by.username && (
+                  <button onClick={() => deleteComment(_id)}> Delete</button>
+                )}
               </div>
               <Voter commentId={_id} votes={votes} />
             </div>

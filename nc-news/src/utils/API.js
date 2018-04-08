@@ -39,6 +39,11 @@ const API = {
     return axios
       .put(`${APIroute}/comments/${commentId}?vote=${vote}`)
       .then(response => response.data);
+  },
+  deleteComment: commentId => {
+    return axios
+      .delete(`${APIroute}/comments/${commentId}`)
+      .then(response => response.data);
   }
 };
 

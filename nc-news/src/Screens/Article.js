@@ -1,18 +1,24 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import PT from "prop-types";
 import API from "../utils/API";
 import sortBy from "../utils/sortBy";
-import Voter from "../components/Voter";
-import Comments from "../components/Comments";
+import ArticleView from "../components/ArticleView";
 import "./Article.css";
+import _ from "underscore";
 
 class Article extends Component {
   state = {
-    comments: []
+    comments: [],
+    article: {},
+    article_id: this.props.match.article_id
+  };
+
+  static propTypes = {
+    username: PT.string
   };
 
   componentDidMount() {
+    this.refreshArticle();
     this.refreshComments();
   }
 
@@ -27,36 +33,37 @@ class Article extends Component {
   }
 
   postComment = comment => {
-    API.postComment(this.props.match.params.article_id, comment).then(res =>
-      this.refreshComments()
-    );
+    API.postComment(
+      this.props.match.params.article_id,
+      comment,
+      this.props.username
+    ).then(res => this.refreshComments());
+  };
+
+  deleteComment = comment_id => {
+    API.deleteComment(comment_id).then(res => this.refreshComments());
+  };
+
+  refreshArticle = () => {
+    API.getArticles().then(({ articles }) => {
+      const article = _.findWhere(articles, {
+        _id: this.props.match.params.article_id
+      });
+      this.setState({ article });
+    });
   };
 
   render() {
-    const id = this.props.match.params.article_id;
-    const article = this.props.getArticleById(id);
-    const { body, comments, topic, created_by, title, votes } = article;
     return (
-      <div className="article">
-        <h4>{title}</h4>
-        <h5>Topic: {topic}</h5>
-        <Voter articleId={id} votes={votes} />
-        <h6>Comments: {comments}</h6>
-        <h5>
-          Author: <Link to={`/users/${created_by}`}>{created_by}</Link>
-        </h5>
-        <p className="body">{body}</p>
-        <Comments
-          articleId={id}
-          comments={this.state.comments}
-          postComment={this.postComment}
-        />
-      </div>
+      <ArticleView
+        article={this.state.article}
+        allComments={this.state.comments}
+        postComment={this.postComment}
+        username={this.props.username}
+        deleteComment={this.deleteComment}
+      />
     );
   }
-  static propTypes = {
-    getArticleById: PT.func.isRequired
-  };
 }
 
 export default Article;
