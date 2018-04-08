@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import API from "../utils/API";
 import Button from "./Button";
 import Votes from "./Votes";
+import produce from "immer";
 
 class Voter extends Component {
   state = {
@@ -9,12 +10,13 @@ class Voter extends Component {
     voted: false
   };
 
-  componentDidMount() {
-    const votes = this.props.votes;
-    console.log(votes);
-    this.setState({
-      votes
-    });
+  static getDerivedStateFromProps(newProps, prevState) {
+    if (newProps.votes !== prevState.votes) {
+      return {
+        votes: newProps.votes
+      };
+    }
+    return null;
   }
 
   handleClick = value => {
@@ -26,22 +28,26 @@ class Voter extends Component {
   };
 
   changeArticleVote = vote => {
-    const { articleId, votes } = this.props;
+    const { articleId } = this.props;
     API.putArticleVote(articleId, vote).then(res => {
-      this.setState({
-        voted: true,
-        votes: vote === "up" ? +votes + 1 : +votes - 1
-      });
+      this.setState(
+        produce(draft => {
+          draft.voted = true;
+          vote === "up" ? ++draft.votes : --draft.votes;
+        })
+      );
     });
   };
 
   changeCommentVote = vote => {
-    const { commentId, votes } = this.props;
+    const { commentId } = this.props;
     API.putCommentVote(commentId, vote).then(res => {
-      this.setState({
-        voted: true,
-        votes: vote === "up" ? +votes + 1 : +votes - 1
-      });
+      this.setState(
+        produce(draft => {
+          draft.voted = true;
+          vote === "up" ? ++draft.votes : --draft.votes;
+        })
+      );
     });
   };
 
