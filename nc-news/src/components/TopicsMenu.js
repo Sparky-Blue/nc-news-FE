@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "./TopicsMenu.css";
-import Search from "./Search";
 import Topics from "./Topics";
 import API from "../utils/API";
 
