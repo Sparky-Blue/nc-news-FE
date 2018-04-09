@@ -22,18 +22,6 @@ class Article extends Component {
 
   componentDidMount() {
     this.refreshArticle();
-    this.refreshComments();
-  }
-
-  refreshComments() {
-    const articleId = this.props.match.params.article_id;
-    API.getCommentsByArticle(articleId).then(({ comments }) => {
-      const commentsList = sortBy(comments, "created_at");
-      this.setState({
-        comments: commentsList,
-        loading: false
-      });
-    });
   }
 
   eventHandler = e => {
@@ -70,7 +58,22 @@ class Article extends Component {
         _id: this.props.match.params.article_id
       });
       if (!article) this.setState({ incorrectId: true, loading: false });
-      else this.setState({ article, loading: false });
+      else {
+        this.setState({ article, loading: false });
+        this.refreshComments();
+      }
+    });
+  };
+
+  refreshComments = () => {
+    const articleId = this.props.match.params.article_id;
+    if (this.state.incorrectId) return;
+    API.getCommentsByArticle(articleId).then(({ comments }) => {
+      const commentsList = sortBy(comments, "created_at");
+      this.setState({
+        comments: commentsList,
+        loading: false
+      });
     });
   };
 
