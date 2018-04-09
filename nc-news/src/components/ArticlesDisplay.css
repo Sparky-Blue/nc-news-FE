@@ -3,6 +3,7 @@
   flex-direction: column;
   align-content: center;
   justify-content: space-around;
+  border: black solid 1px;
 }
 .articleItem {
   display: flex;
@@ -12,7 +13,7 @@
 .articleDisplay {
   display: flex;
   flex-direction: row;
-  border: white 1px solid;
+  border: black 1px solid;
   border-radius: 5px;
   margin: 10px;
   padding: 10px;
