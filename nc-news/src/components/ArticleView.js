@@ -23,14 +23,15 @@ const ArticleView = ({
         <p>No article found</p>
       ) : (
         <div>
-          <h4>{title}</h4>
-          <h5>Topic: {topic}</h5>
-          <Voter articleId={_id} votes={votes} />
-          <h6>Comments: {comments}</h6>
-          <h5>
-            Author: <Link to={`/users/${created_by}`}>{created_by}</Link>
-          </h5>
-          <p className="body">{body}</p>
+          <div className="articleView">
+            <h4>{title}</h4>
+            <h5>Topic: {topic}</h5>
+            <Voter articleId={_id} votes={votes} />
+            <h5>
+              Author: <Link to={`/users/${created_by}`}>{created_by}</Link>
+            </h5>
+            <p className="body">{body}</p>
+          </div>
           <Comments
             comments={allComments}
             postComment={postComment}

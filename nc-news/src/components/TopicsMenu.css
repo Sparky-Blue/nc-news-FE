@@ -3,9 +3,9 @@
   margin: 0;
   padding: 0;
   overflow: hidden;
-  color: black;
+  color: white;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   flex-direction: row;
 }
 

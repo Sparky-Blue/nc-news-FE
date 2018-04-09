@@ -12,11 +12,12 @@ const LogIn = ({
 }) => {
   return (
     <div className="login">
-      {usernameError && <p>Please enter a valid username</p>}
+      {usernameError ? <p>Please enter a valid username</p> : <p> </p>}
       {!username && (
         <div className="newUserLogin">
           <label>
-            Enter username<input
+            Enter username:
+            <input
               type="text"
               className="username"
               onChange={eventHandler}

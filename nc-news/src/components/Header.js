@@ -7,7 +7,14 @@ const Header = () => {
   return (
     <header>
       <Link to="/">
-        <h1>NC News</h1>
+        <div id="title">
+          <img
+            src="https://northcoders.com/images/logos/learn_to_code_manchester_rw_original.png"
+            alt="northcoders logo"
+            id="ncLogo"
+          />
+          <h1>NEWS</h1>
+        </div>
       </Link>
       <TopicsMenu />
     </header>
