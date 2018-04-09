@@ -10,7 +10,8 @@ class Article extends Component {
   state = {
     comments: [],
     article: {},
-    article_id: this.props.match.article_id
+    article_id: this.props.match.article_id,
+    newComment: ""
   };
 
   static propTypes = {
@@ -32,12 +33,28 @@ class Article extends Component {
     });
   }
 
+  eventHandler = e => {
+    const textInput = e.target.value;
+    this.saveNewComment(textInput);
+  };
+
+  saveNewComment = input => {
+    this.setState({
+      newComment: input
+    });
+  };
+
   postComment = comment => {
     API.postComment(
       this.props.match.params.article_id,
       comment,
       this.props.username
-    ).then(res => this.refreshComments());
+    ).then(res => {
+      this.refreshComments();
+      this.setState({
+        newComment: ""
+      });
+    });
   };
 
   deleteComment = comment_id => {
@@ -61,6 +78,8 @@ class Article extends Component {
         postComment={this.postComment}
         username={this.props.username}
         deleteComment={this.deleteComment}
+        eventHandler={this.eventHandler}
+        newComment={this.state.newComment}
       />
     );
   }

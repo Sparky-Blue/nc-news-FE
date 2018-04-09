@@ -8,7 +8,9 @@ const ArticleView = ({
   allComments,
   postComment,
   username,
-  deleteComment
+  deleteComment,
+  eventHandler,
+  newComment
 }) => {
   const { body, comments, topic, created_by, _id, title, votes } = article;
   return (
@@ -26,6 +28,8 @@ const ArticleView = ({
         postComment={postComment}
         username={username}
         deleteComment={deleteComment}
+        eventHandler={eventHandler}
+        newComment={newComment}
       />
     </div>
   );

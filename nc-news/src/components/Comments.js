@@ -4,24 +4,9 @@ import Comment from "./Comment";
 import AddComment from "./AddComment";
 
 class Comments extends Component {
-  state = {
-    newComment: ""
-  };
-
   static propTypes = {
     comments: PT.array.isRequired,
     postComment: PT.func.isRequired
-  };
-
-  eventHandler = e => {
-    const textInput = e.target.value;
-    this.saveNewComment(textInput);
-  };
-
-  saveNewComment = input => {
-    this.setState({
-      newComment: input
-    });
   };
 
   render() {
@@ -29,8 +14,8 @@ class Comments extends Component {
       <div className="comments">
         {this.props.username ? (
           <AddComment
-            eventHandler={this.eventHandler}
-            newComment={this.state.newComment}
+            eventHandler={this.props.eventHandler}
+            newComment={this.props.newComment}
             postComment={this.props.postComment}
           />
         ) : (
