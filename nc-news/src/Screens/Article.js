@@ -11,7 +11,8 @@ class Article extends Component {
     comments: [],
     article: {},
     article_id: this.props.match.article_id,
-    newComment: ""
+    newComment: "",
+    loading: true
   };
 
   static propTypes = {
@@ -28,7 +29,8 @@ class Article extends Component {
     API.getCommentsByArticle(articleId).then(({ comments }) => {
       const commentsList = sortBy(comments, "created_at");
       this.setState({
-        comments: commentsList
+        comments: commentsList,
+        loading: false
       });
     });
   }
@@ -66,7 +68,7 @@ class Article extends Component {
       const article = _.findWhere(articles, {
         _id: this.props.match.params.article_id
       });
-      this.setState({ article });
+      this.setState({ article, loading: false });
     });
   };
 
@@ -80,6 +82,7 @@ class Article extends Component {
         deleteComment={this.deleteComment}
         eventHandler={this.eventHandler}
         newComment={this.state.newComment}
+        loading={this.state.loading}
       />
     );
   }

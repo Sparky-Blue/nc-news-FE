@@ -1,15 +1,18 @@
 import React, { Component } from "react";
+import Loading from "../components/Loading";
 import API from "../utils/API";
 
 class User extends Component {
   state = {
-    user: []
+    user: [],
+    loading: true
   };
 
   componentDidMount() {
     API.getUser(this.props.match.params.username).then(({ user }) => {
       this.setState({
-        user
+        user,
+        loading: false
       });
     });
   }
@@ -18,6 +21,7 @@ class User extends Component {
     const { name, username, avatar_url } = this.state.user;
     return (
       <div className="col-sm-3 user">
+        {this.state.loading && <Loading loading={this.state.loading} />}
         <div className="card">
           <canvas
             className="header-bg"

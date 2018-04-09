@@ -31,16 +31,14 @@ const LogIn = ({
       )}
       {username && (
         <div>
-          <p>
-            Welcome, you are logged in as {username}
-            <button
-              onClick={() => {
-                signout();
-              }}
-            >
-              Sign out
-            </button>
-          </p>
+          <p>Welcome, you are logged in as {username}</p>
+          <button
+            onClick={() => {
+              signout();
+            }}
+          >
+            Sign out
+          </button>
         </div>
       )}
     </div>

@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Voter from "../components/Voter";
 import Comments from "../components/Comments";
+import Loading from "../components/Loading";
 
 const ArticleView = ({
   article,
@@ -10,11 +11,13 @@ const ArticleView = ({
   username,
   deleteComment,
   eventHandler,
-  newComment
+  newComment,
+  loading
 }) => {
   const { body, comments, topic, created_by, _id, title, votes } = article;
   return (
     <div className="article">
+      {loading && <Loading loading={loading} />}
       <h4>{title}</h4>
       <h5>Topic: {topic}</h5>
       <Voter articleId={_id} votes={votes} />

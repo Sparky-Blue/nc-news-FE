@@ -10,7 +10,7 @@ class Home extends Component {
   state = {
     articles: [],
     loading: true,
-    username: null,
+    username: "northcoders",
     newUser: "",
     usernameError: false
   };
