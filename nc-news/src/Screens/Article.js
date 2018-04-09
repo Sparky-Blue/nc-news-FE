@@ -12,7 +12,8 @@ class Article extends Component {
     article: {},
     article_id: this.props.match.article_id,
     newComment: "",
-    loading: true
+    loading: true,
+    incorrectId: false
   };
 
   static propTypes = {
@@ -68,7 +69,8 @@ class Article extends Component {
       const article = _.findWhere(articles, {
         _id: this.props.match.params.article_id
       });
-      this.setState({ article, loading: false });
+      if (!article) this.setState({ incorrectId: true, loading: false });
+      else this.setState({ article, loading: false });
     });
   };
 
@@ -83,6 +85,7 @@ class Article extends Component {
         eventHandler={this.eventHandler}
         newComment={this.state.newComment}
         loading={this.state.loading}
+        incorrectId={this.state.incorrectId}
       />
     );
   }
