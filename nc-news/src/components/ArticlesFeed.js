@@ -11,6 +11,9 @@ class ArticleFeed extends Component {
   changeSearchStatus = searchTerm => {
     let searchActive = false;
     if (searchTerm.length > 0) searchActive = true;
+    this.setState({
+      searchActive
+    });
   };
 
   render() {

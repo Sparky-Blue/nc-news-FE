@@ -6,14 +6,12 @@ class Search extends Component {
   KEYS_TO_FILTERS = ["title", "body", "created_by"];
   state = {
     searchTerm: "",
-    filteredArticles: [],
-    serchActive: false
+    filteredArticles: []
   };
 
   searchUpdated = term => {
-    let searchActive = false;
-    if (this.state.searchTerm.length > 0) searchActive = true;
-    this.setState({ searchTerm: term, searchActive });
+    this.props.changeSearchStatus(term);
+    this.setState({ searchTerm: term });
     this.filterArticles();
   };
 
