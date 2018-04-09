@@ -28,6 +28,8 @@ class Search extends Component {
     return (
       <div>
         <SearchInput className="search-input" onChange={this.searchUpdated} />
+        {!this.state.filteredArticles.length &&
+          this.state.searchTerm && <p>No results</p>}
         <ArticleDisplay articles={this.state.filteredArticles} />
       </div>
     );
