@@ -20,6 +20,9 @@ const LogIn = ({
               type="text"
               className="username"
               onChange={eventHandler}
+              onKeyUp={e => {
+                if (e.key === "Enter") authenticateUserName(newUser);
+              }}
               value={newUser}
             />
           </label>
