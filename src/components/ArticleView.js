@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Voter from "../components/Voter";
 import Comments from "../components/Comments";
 import Loading from "../components/Loading";
+import PageNotFound from "./PageNotFound";
 
 const ArticleView = ({
   article,
@@ -20,7 +21,7 @@ const ArticleView = ({
     <div className="article">
       {loading && <Loading loading={loading} />}
       {incorrectId ? (
-        <p>No article found</p>
+        <PageNotFound />
       ) : (
         <div>
           <div className="articleView">

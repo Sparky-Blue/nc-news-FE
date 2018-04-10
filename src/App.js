@@ -1,12 +1,17 @@
 import React, { Component } from "react";
-import { Route } from "react-router-dom";
-import ArticlesFeed from "../components/ArticlesFeed";
-import API from "../utils/API";
-import Article from "./Article";
-import sortBy from "../utils/sortBy";
-import LogIn from "../components/LogIn";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import "./App.css";
+import Header from "./components/Header";
+import Home from "./Screens/Home";
+import ArticlesByTopic from "./Screens/ArticlesByTopic";
+import User from "./Screens/User";
+import Footer from "./components/Footer";
+import API from "./utils/API";
+import Article from "./Screens/Article";
+import sortBy from "./utils/sortBy";
+import LogIn from "./components/LogIn";
 
-class Home extends Component {
+class App extends Component {
   state = {
     articles: [],
     loading: true,
@@ -60,35 +65,24 @@ class Home extends Component {
 
   render() {
     const { articles, loading, username, newUser, usernameError } = this.state;
-    const { url } = this.props.match;
     return (
-      <div className="home">
-        <LogIn
-          newUser={newUser}
-          usernameError={usernameError}
-          eventHandler={this.eventHandler}
-          signout={this.signout}
-          username={username}
-          authenticateUserName={this.authenticateUserName}
-        />
-        <Route
-          exact
-          path={url}
-          render={props => {
-            return (
-              <ArticlesFeed {...props} articles={articles} loading={loading} />
-            );
-          }}
-        />
-        <Route
-          path={`${url}articles/:article_id`}
-          render={props => {
-            return <Article {...props} username={username} />;
-          }}
-        />
-      </div>
+      <Router>
+        <div className="wrapper app">
+          <Header />
+          <Route exact path="/" component={Home} />
+          <Route path="/topics/:topic/articles" component={ArticlesByTopic} />
+          <Route path="/users/:username" component={User} />
+          <Route
+            path={`/articles/:article_id`}
+            render={props => {
+              return <Article {...props} username={username} />;
+            }}
+          />
+          <Footer />
+        </div>
+      </Router>
     );
   }
 }
 
-export default Home;
+export default App;
