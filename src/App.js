@@ -8,6 +8,7 @@ import User from "./Screens/User";
 import Footer from "./components/Footer";
 import API from "./utils/API";
 import Article from "./Screens/Article";
+import PageNotFound from "./components/PageNotFound";
 
 class App extends Component {
   state = {
@@ -53,31 +54,34 @@ class App extends Component {
       <Router>
         <div className="wrapper app">
           <Header />
-          <Route
-            exact
-            path="/"
-            render={props => {
-              return (
-                <Home
-                  {...props}
-                  newUser={this.state.newUser}
-                  usernameError={this.state.usernameError}
-                  eventHandler={this.eventHandler}
-                  signout={this.signout}
-                  username={this.state.username}
-                  authenticateUserName={this.authenticateUserName}
-                />
-              );
-            }}
-          />
-          <Route path="/topics/:topic/articles" component={ArticlesByTopic} />
-          <Route path="/users/:username" component={User} />
-          <Route
-            path={`/articles/:article_id`}
-            render={props => {
-              return <Article {...props} username={this.state.username} />;
-            }}
-          />
+          <Switch>
+            <Route
+              exact
+              path="/"
+              render={props => {
+                return (
+                  <Home
+                    {...props}
+                    newUser={this.state.newUser}
+                    usernameError={this.state.usernameError}
+                    eventHandler={this.eventHandler}
+                    signout={this.signout}
+                    username={this.state.username}
+                    authenticateUserName={this.authenticateUserName}
+                  />
+                );
+              }}
+            />
+            <Route path="/topics/:topic/articles" component={ArticlesByTopic} />
+            <Route path="/users/:username" component={User} />
+            <Route
+              path={`/articles/:article_id`}
+              render={props => {
+                return <Article {...props} username={this.state.username} />;
+              }}
+            />
+            <Route component={PageNotFound} />
+          </Switch>
           <Footer />
         </div>
       </Router>
