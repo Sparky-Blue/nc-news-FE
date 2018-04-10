@@ -72,7 +72,22 @@ class App extends Component {
                 );
               }}
             />
-            <Route path="/topics/:topic/articles" component={ArticlesByTopic} />
+            <Route
+              path="/topics/:topic/articles"
+              render={props => {
+                return (
+                  <ArticlesByTopic
+                    {...props}
+                    username={this.state.username}
+                    newUser={this.state.newUser}
+                    usernameError={this.state.usernameError}
+                    eventHandler={this.eventHandler}
+                    signout={this.signout}
+                    authenticateUserName={this.authenticateUserName}
+                  />
+                );
+              }}
+            />
             <Route path="/users/:username" component={User} />
             <Route
               path={"/articles/:article_id"}

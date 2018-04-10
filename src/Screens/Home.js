@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Route } from "react-router-dom";
 import ArticlesFeed from "../components/ArticlesFeed";
 import API from "../utils/API";
 import sortBy from "../utils/sortBy";

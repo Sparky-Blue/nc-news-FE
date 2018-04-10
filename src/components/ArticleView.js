@@ -16,7 +16,7 @@ const ArticleView = ({
   loading,
   incorrectId
 }) => {
-  const { body, comments, topic, created_by, _id, title, votes } = article;
+  const { body, topic, created_by, _id, title, votes } = article;
   return (
     <div className="article">
       {loading && <Loading loading={loading} />}

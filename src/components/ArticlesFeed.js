@@ -19,7 +19,6 @@ class ArticleFeed extends Component {
 
   render() {
     const { loading, articles } = this.props;
-    console.log(this.props, "here");
     return (
       <div>
         <LogIn

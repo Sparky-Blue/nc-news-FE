@@ -9,11 +9,12 @@ class TopicsMenu extends Component {
   };
 
   componentDidMount() {
-    API.getTopics().then(({ topics }) =>
+    API.getTopics().then(({ topics }) => {
+      console.log(topics);
       this.setState({
         topics
-      })
-    );
+      });
+    });
   }
 
   render() {
