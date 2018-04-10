@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import SearchInput, { createFilter } from "react-search-input";
 import ArticleDisplay from "./ArticleDisplay";
+import "./Search.css";
 
 class Search extends Component {
   KEYS_TO_FILTERS = ["title", "body", "created_by"];
@@ -26,7 +27,7 @@ class Search extends Component {
 
   render() {
     return (
-      <div>
+      <div className="search">
         <SearchInput className="search-input" onChange={this.searchUpdated} />
         {!this.state.filteredArticles.length &&
           this.state.searchTerm && <p>No results</p>}
