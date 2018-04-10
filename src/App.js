@@ -6,6 +6,7 @@ import Home from "./Screens/Home";
 import ArticlesByTopic from "./Screens/ArticlesByTopic";
 import User from "./Screens/User";
 import Footer from "./components/Footer";
+import API from "./utils/API";
 import Article from "./Screens/Article";
 
 class App extends Component {
