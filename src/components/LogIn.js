@@ -2,7 +2,6 @@ import React from "react";
 import "./LogIn.css";
 
 const LogIn = ({
-  logInState,
   eventHandler,
   authenticateUserName,
   signout,

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Loading from "./Loading";
 import ArticleDisplay from "./ArticleDisplay";
 import Search from "./Search";
+import LogIn from "../components/LogIn";
 
 class ArticleFeed extends Component {
   state = {
@@ -18,8 +19,17 @@ class ArticleFeed extends Component {
 
   render() {
     const { loading, articles } = this.props;
+    console.log(this.props, "here");
     return (
       <div>
+        <LogIn
+          newUser={this.props.newUser}
+          usernameError={this.props.usernameError}
+          eventHandler={this.props.eventHandler}
+          signout={this.props.signout}
+          username={this.props.username}
+          authenticateUserName={this.props.authenticateUserName}
+        />
         {loading && <Loading loading={loading} />}
         <Search
           articles={articles}

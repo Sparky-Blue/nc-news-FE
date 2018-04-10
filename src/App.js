@@ -62,11 +62,11 @@ class App extends Component {
                 return (
                   <Home
                     {...props}
+                    username={this.state.username}
                     newUser={this.state.newUser}
                     usernameError={this.state.usernameError}
                     eventHandler={this.eventHandler}
                     signout={this.signout}
-                    username={this.state.username}
                     authenticateUserName={this.authenticateUserName}
                   />
                 );
@@ -75,7 +75,7 @@ class App extends Component {
             <Route path="/topics/:topic/articles" component={ArticlesByTopic} />
             <Route path="/users/:username" component={User} />
             <Route
-              path={`/articles/:article_id`}
+              path={"/articles/:article_id"}
               render={props => {
                 return <Article {...props} username={this.state.username} />;
               }}
