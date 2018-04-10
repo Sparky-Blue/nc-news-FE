@@ -6,29 +6,13 @@ import Home from "./Screens/Home";
 import ArticlesByTopic from "./Screens/ArticlesByTopic";
 import User from "./Screens/User";
 import Footer from "./components/Footer";
-import API from "./utils/API";
 import Article from "./Screens/Article";
-import sortBy from "./utils/sortBy";
-import LogIn from "./components/LogIn";
 
 class App extends Component {
   state = {
-    articles: [],
-    loading: true,
     username: "northcoders",
     newUser: "",
     usernameError: false
-  };
-
-  componentDidMount() {
-    this.updateArticles();
-  }
-
-  updateArticles = () => {
-    API.getArticles().then(({ articles }) => {
-      const articlesList = sortBy(articles, "votes");
-      this.setState({ articles: articlesList, loading: false });
-    });
   };
 
   eventHandler = e => {
@@ -64,18 +48,33 @@ class App extends Component {
   };
 
   render() {
-    const { articles, loading, username, newUser, usernameError } = this.state;
     return (
       <Router>
         <div className="wrapper app">
           <Header />
-          <Route exact path="/" component={Home} />
+          <Route
+            exact
+            path="/"
+            render={props => {
+              return (
+                <Home
+                  {...props}
+                  newUser={this.state.newUser}
+                  usernameError={this.state.usernameError}
+                  eventHandler={this.eventHandler}
+                  signout={this.signout}
+                  username={this.state.username}
+                  authenticateUserName={this.authenticateUserName}
+                />
+              );
+            }}
+          />
           <Route path="/topics/:topic/articles" component={ArticlesByTopic} />
           <Route path="/users/:username" component={User} />
           <Route
             path={`/articles/:article_id`}
             render={props => {
-              return <Article {...props} username={username} />;
+              return <Article {...props} username={this.state.username} />;
             }}
           />
           <Footer />
