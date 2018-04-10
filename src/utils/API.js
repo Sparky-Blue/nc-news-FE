@@ -11,7 +11,8 @@ const API = {
   getArticlesByTopic: topic => {
     return axios
       .get(`${APIroute}/topics/articles/${topic}`)
-      .then(response => response.data);
+      .then(response => response.data)
+      .catch(error => error.response.status);
   },
   getCommentsByArticle: articleId => {
     return axios

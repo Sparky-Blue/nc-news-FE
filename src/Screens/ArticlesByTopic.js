@@ -4,9 +4,10 @@ import API from "../utils/API";
 import ArticlesFeed from "../components/ArticlesFeed";
 import sortBy from "../utils/sortBy";
 import Loading from "../components/Loading";
+import PageNotFound from "../components/PageNotFound";
 
 class ArticlesByTopic extends Component {
-  state = { articles: [], topic: null, loadingData: true };
+  state = { articles: [], topic: null, loadingData: true, error: false };
 
   componentDidMount() {
     this.updateArticlesByTopic();
@@ -16,7 +17,8 @@ class ArticlesByTopic extends Component {
     if (newProps.match.params.topic !== prevState.topic) {
       return {
         topic: newProps.match.params.topic,
-        loadingData: true
+        loadingData: true,
+        error: false
       };
     }
     return null;
@@ -31,8 +33,11 @@ class ArticlesByTopic extends Component {
   updateArticlesByTopic() {
     const topic = this.props.match.params.topic;
     API.getArticlesByTopic(topic).then(({ articles }) => {
-      const articlesList = sortBy(articles, "votes");
-      this.setState({ articles: articlesList, topic, loadingData: false });
+      if (!articles) this.setState({ loadingData: false, error: true });
+      else {
+        const articlesList = sortBy(articles, "votes");
+        this.setState({ articles: articlesList, topic, loadingData: false });
+      }
     });
   }
 
@@ -42,7 +47,16 @@ class ArticlesByTopic extends Component {
         {this.state.loadingData && (
           <Loading loadingData={this.state.loadingData} />
         )}
-        <ArticlesFeed articles={this.state.articles} />
+        {this.state.error && <PageNotFound />}
+        <ArticlesFeed
+          articles={this.state.articles}
+          newUser={this.props.newUser}
+          usernameError={this.props.usernameError}
+          eventHandler={this.props.eventHandler}
+          signout={this.props.signout}
+          username={this.props.username}
+          authenticateUserName={this.props.authenticateUserName}
+        />
       </div>
     );
   }
