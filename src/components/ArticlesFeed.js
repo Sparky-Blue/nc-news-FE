@@ -3,10 +3,25 @@ import Loading from "./Loading";
 import ArticleDisplay from "./ArticleDisplay";
 import Search from "./Search";
 import LogIn from "../components/LogIn";
+import API from "../utils/API";
+import sortBy from "../utils/sortBy";
 
 class ArticleFeed extends Component {
   state = {
-    searchActive: false
+    searchActive: false,
+    articles: [],
+    loading: true
+  };
+
+  componentDidMount() {
+    this.updateArticles();
+  }
+
+  updateArticles = () => {
+    API.getArticles().then(({ articles }) => {
+      const articlesList = sortBy(articles, "votes");
+      this.setState({ articles: articlesList, loading: false });
+    });
   };
 
   changeSearchStatus = searchTerm => {
@@ -18,7 +33,7 @@ class ArticleFeed extends Component {
   };
 
   render() {
-    const { loading, articles } = this.props;
+    const { loading, articles } = this.state;
     return (
       <div>
         <LogIn
