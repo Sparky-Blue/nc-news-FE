@@ -7,6 +7,7 @@
   display: flex;
   justify-content: center;
   flex-direction: row;
+  background: #d7000d;
 }
 
 #topics {
