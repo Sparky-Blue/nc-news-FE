@@ -67,8 +67,9 @@ class App extends Component {
                     usernameError={this.state.usernameError}
                     eventHandler={this.eventHandler}
                     signout={this.signout}
-                    authenticateUserName={this.authenticateUserName}
-                  />
+                    authenticateUserName={this.authenticateUserName}>
+                    
+                  <Home />
                 );
               }}
             />
