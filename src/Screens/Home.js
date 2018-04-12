@@ -1,21 +1,26 @@
-import React, { Component } from "react";
+import React from "react";
 import ArticlesFeed from "../components/ArticlesFeed";
 
-class Home extends Component {
-  render() {
-    return (
-      <div className="home">
-        <ArticlesFeed
-          newUser={this.props.newUser}
-          usernameError={this.props.usernameError}
-          eventHandler={this.props.eventHandler}
-          signout={this.props.signout}
-          username={this.props.username}
-          authenticateUserName={this.props.authenticateUserName}
-        />
-      </div>
-    );
-  }
-}
+const Home = ({
+  newUser,
+  usernameError,
+  eventHandler,
+  signout,
+  username,
+  authenticateUserName
+}) => {
+  return (
+    <div className="home">
+      <ArticlesFeed
+        newUser={newUser}
+        usernameError={usernameError}
+        eventHandler={eventHandler}
+        signout={signout}
+        username={username}
+        authenticateUserName={authenticateUserName}
+      />
+    </div>
+  );
+};
 
 export default Home;
