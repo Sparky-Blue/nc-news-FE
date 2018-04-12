@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import SearchInput, { createFilter } from "react-search-input";
 import ArticleDisplay from "./ArticleDisplay";
 import "./Search.css";
@@ -8,6 +9,11 @@ class Search extends Component {
   state = {
     searchTerm: "",
     filteredArticles: []
+  };
+
+  static propTypes = {
+    changeSearchStatus: PropTypes.func.isRequired,
+    articles: PropTypes.array.isRequired
   };
 
   searchUpdated = term => {

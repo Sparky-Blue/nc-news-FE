@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Voter from "./Voter";
 import "./ArticlesDisplay.css";
+import PropTypes from "prop-types";
 
 const ArticleDisplay = ({ articles }) => {
   return (
@@ -28,6 +29,10 @@ const ArticleDisplay = ({ articles }) => {
       })}
     </ul>
   );
+};
+
+ArticleDisplay.propTypes = {
+  articles: PropTypes.array.isRequired
 };
 
 export default ArticleDisplay;

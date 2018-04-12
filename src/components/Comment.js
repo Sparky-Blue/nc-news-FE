@@ -2,6 +2,7 @@ import React from "react";
 import Voter from "./Voter";
 import displayDate from "../utils/displayDate";
 import "./Comment.css";
+import PropTypes from "prop-types";
 
 const Comment = ({ comments, deleteComment, username }) => {
   return (
@@ -27,6 +28,12 @@ const Comment = ({ comments, deleteComment, username }) => {
       })}
     </ul>
   );
+};
+
+Comment.propTypes = {
+  comments: PropTypes.array.isRequired,
+  deleteComment: PropTypes.func.isRequired,
+  username: PropTypes.string
 };
 
 export default Comment;

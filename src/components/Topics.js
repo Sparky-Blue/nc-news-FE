@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 const Topics = ({ topics }) => {
@@ -13,6 +14,10 @@ const Topics = ({ topics }) => {
       </div>
     </ul>
   );
+};
+
+Topics.propTypes = {
+  topics: PropTypes.array.isRequired
 };
 
 export default Topics;

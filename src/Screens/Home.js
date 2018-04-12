@@ -1,5 +1,6 @@
 import React from "react";
 import ArticlesFeed from "../components/ArticlesFeed";
+import PropTypes from "prop-types";
 
 const Home = ({
   newUser,
@@ -23,4 +24,12 @@ const Home = ({
   );
 };
 
+Home.propTypes = {
+  newUser: PropTypes.string.isRequired,
+  username: PropTypes.string,
+  usernameError: PropTypes.bool.isRequired,
+  eventHandler: PropTypes.func.isRequired,
+  signout: PropTypes.func.isRequired,
+  authenticateUserName: PropTypes.func.isRequired
+};
 export default Home;

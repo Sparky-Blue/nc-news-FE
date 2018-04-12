@@ -5,12 +5,22 @@ import Search from "./Search";
 import LogIn from "../components/LogIn";
 import API from "../utils/API";
 import sortBy from "../utils/sortBy";
+import PropTypes from "prop-types";
 
 class ArticleFeed extends Component {
   state = {
     searchActive: false,
     articles: [],
     loading: true
+  };
+
+  static propTypes = {
+    newUser: PropTypes.string.isRequired,
+    usernameError: PropTypes.bool.isRequired,
+    eventHandler: PropTypes.func.isRequired,
+    signout: PropTypes.func.isRequired,
+    username: PropTypes.string,
+    authenticateUserName: PropTypes.func.isRequired
   };
 
   componentDidMount() {
@@ -34,15 +44,23 @@ class ArticleFeed extends Component {
 
   render() {
     const { loading, articles } = this.state;
+    const {
+      newUser,
+      usernameError,
+      eventHandler,
+      signout,
+      username,
+      authenticateUserName
+    } = this.props;
     return (
       <div>
         <LogIn
-          newUser={this.props.newUser}
-          usernameError={this.props.usernameError}
-          eventHandler={this.props.eventHandler}
-          signout={this.props.signout}
-          username={this.props.username}
-          authenticateUserName={this.props.authenticateUserName}
+          newUser={newUser}
+          usernameError={usernameError}
+          eventHandler={eventHandler}
+          signout={signout}
+          username={username}
+          authenticateUserName={authenticateUserName}
         />
         {loading && <Loading loading={loading} />}
         <Search

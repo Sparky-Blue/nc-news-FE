@@ -1,5 +1,6 @@
 import React from "react";
 import "./LogIn.css";
+import PropTypes from "prop-types";
 
 const LogIn = ({
   eventHandler,
@@ -43,6 +44,15 @@ const LogIn = ({
       )}
     </div>
   );
+};
+
+LogIn.propTypes = {
+  signout: PropTypes.func.isRequired,
+  eventHandler: PropTypes.func.isRequired,
+  username: PropTypes.string,
+  authenticateUserName: PropTypes.func.isRequired,
+  newUser: PropTypes.string.isRequired,
+  usernameError: PropTypes.bool.isRequired
 };
 
 export default LogIn;

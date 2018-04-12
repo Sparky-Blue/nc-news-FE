@@ -1,7 +1,7 @@
 import React from "react";
 import "./Loading.css";
 
-const Loading = ({ loading }) => {
+const Loading = () => {
   return (
     <div className="loading modal-background mask">
       <div className="loading-content modal">

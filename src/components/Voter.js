@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import API from "../utils/API";
 import Button from "./Button";
 import Votes from "./Votes";
@@ -8,6 +9,12 @@ class Voter extends Component {
   state = {
     votes: this.props.votes,
     voted: false
+  };
+
+  static propTypes = {
+    votes: PropTypes.number,
+    articleId: PropTypes.string,
+    commentId: PropTypes.string
   };
 
   static getDerivedStateFromProps(newProps, prevState) {

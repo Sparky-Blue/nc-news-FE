@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const AddComment = ({ postComment, newComment, eventHandler }) => {
   return (
@@ -15,6 +16,12 @@ const AddComment = ({ postComment, newComment, eventHandler }) => {
       <button onClick={() => postComment(newComment)}>Submit</button>
     </div>
   );
+};
+
+AddComment.propTypes = {
+  postComment: PropTypes.func.isRequired,
+  newComment: PropTypes.string.isRequired,
+  eventHandler: PropTypes.func.isRequired
 };
 
 export default AddComment;

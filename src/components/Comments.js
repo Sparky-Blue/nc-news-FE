@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import PT from "prop-types";
+import PropTypes from "prop-types";
 import Comment from "./Comment";
 import AddComment from "./AddComment";
 
 class Comments extends Component {
   static propTypes = {
-    comments: PT.array.isRequired,
-    postComment: PT.func.isRequired
+    comments: PropTypes.array.isRequired,
+    postComment: PropTypes.func.isRequired
   };
 
   render() {

@@ -1,5 +1,6 @@
 import React from "react";
 import "./Button.css";
+import PropTypes from "prop-types";
 
 const Button = ({ vote, handleClick, voted }) => {
   return (
@@ -11,6 +12,12 @@ const Button = ({ vote, handleClick, voted }) => {
       <i className={`far fa-thumbs-${vote}`} />
     </button>
   );
+};
+
+Button.propTypes = {
+  vote: PropTypes.string.isRequired,
+  handleClick: PropTypes.func.isRequired,
+  voted: PropTypes.bool.isRequired
 };
 
 export default Button;

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-//import "./ArticlesByTopic.css";
+import PropTypes from "prop-types";
 import API from "../utils/API";
 import ArticlesFeed from "../components/ArticlesFeed";
 import sortBy from "../utils/sortBy";
@@ -8,6 +8,15 @@ import PageNotFound from "../components/PageNotFound";
 
 class ArticlesByTopic extends Component {
   state = { articles: [], topic: null, loadingData: true, error: false };
+
+  static propTypes = {
+    newUser: PropTypes.string.isRequired,
+    usernameError: PropTypes.bool.isRequired,
+    eventHandler: PropTypes.func.isRequired,
+    signout: PropTypes.func.isRequired,
+    username: PropTypes.string,
+    authenticateUserName: PropTypes.func.isRequired
+  };
 
   componentDidMount() {
     this.updateArticlesByTopic();

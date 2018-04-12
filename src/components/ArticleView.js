@@ -4,6 +4,7 @@ import Voter from "../components/Voter";
 import Comments from "../components/Comments";
 import Loading from "../components/Loading";
 import PageNotFound from "./PageNotFound";
+import PropTypes from "prop-types";
 
 const ArticleView = ({
   article,
@@ -45,6 +46,18 @@ const ArticleView = ({
       )}
     </div>
   );
+};
+
+ArticleView.propTypes = {
+  article: PropTypes.object.isRequired,
+  allComments: PropTypes.array.isRequired,
+  postComment: PropTypes.func.isRequired,
+  username: PropTypes.string,
+  deleteComment: PropTypes.func.isRequired,
+  eventHandler: PropTypes.func.isRequired,
+  newComment: PropTypes.string.isRequired,
+  loading: PropTypes.bool.isRequired,
+  incorrectId: PropTypes.bool.isRequired
 };
 
 export default ArticleView;
